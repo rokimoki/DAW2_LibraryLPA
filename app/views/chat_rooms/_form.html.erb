@@ -1,0 +1,32 @@
+<%= form_with(model: chat_room, local: true) do |form| %>
+  <% if chat_room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chat_room.errors.count, "error") %> prohibited this chat_room from being saved:</h2>
+
+      <ul>
+      <% chat_room.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :chat_room_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image, id: :chat_room_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :chat_room_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

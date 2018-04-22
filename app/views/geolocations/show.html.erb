@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @geolocation.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @geolocation.longitude %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @geolocation.user %>
+</p>
+
+<%= link_to 'Edit', edit_geolocation_path(@geolocation) %> |
+<%= link_to 'Back', geolocations_path %>

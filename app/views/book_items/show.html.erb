@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Referencecode:</strong>
+  <%= @book_item.referenceCode %>
+</p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @book_item.book %>
+</p>
+
+<%= link_to 'Edit', edit_book_item_path(@book_item) %> |
+<%= link_to 'Back', book_items_path %>

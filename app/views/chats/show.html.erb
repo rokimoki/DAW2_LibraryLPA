@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @chat.creator %>
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <%= @chat.receiver %>
+</p>
+
+<%= link_to 'Edit', edit_chat_path(@chat) %> |
+<%= link_to 'Back', chats_path %>
