@@ -9,6 +9,9 @@
 	- Erb para las vistas
 	- Gema devise para el login
 	- Sqlite3 para bases de datos
+	- Cloudinary como servidor de imágenes
+	- Gemas ImageMagick + Carrierwave tratamiento de imágenes
+	- Gema Gmaps para uso de Google Maps
 
 ### Tecnologías Front-End Utilizadas
 - JQuery Mobile
