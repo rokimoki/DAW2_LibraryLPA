@@ -12,8 +12,15 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
+# custom
+.idea
+config/database.yml
+db/development.sqlite3
+db/test.sqlite3
+
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
+config/master.key
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml
@@ -42,3 +49,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore node_modules
+node_modules/
