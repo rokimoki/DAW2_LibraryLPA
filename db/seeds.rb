@@ -218,3 +218,11 @@ Book.find(21).genres << generosAventuraFiccion
 Book.find(22).genres << generosInformatica
 Book.find(23).genres << generosInformatica
 Book.find(24).genres << Genre.where(name: "Novela")
+
+# Cada libro tiene 4 copias
+for book in books
+  for n in 0..3
+    BookItem.create referenceCode: SecureRandom.uuid, book_id: book.id
+  end
+end
+

@@ -12,6 +12,11 @@ class BooksController < ApplicationController
   def show
   end
 
+  def getAllBooks
+    @books = Book.all
+    render json: @books
+  end
+
   # GET /books/new
   def new
     @book = Book.new
