@@ -1,4 +1,5 @@
 class GeolocationsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_geolocation, only: [:show, :edit, :update, :destroy]
 
   # GET /geolocations

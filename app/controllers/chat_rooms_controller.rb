@@ -1,4 +1,5 @@
 class ChatRoomsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_chat_room, only: [:show, :edit, :update, :destroy]
 
   # GET /chat_rooms

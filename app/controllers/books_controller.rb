@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /books
   # GET /books.json
@@ -15,6 +16,35 @@ class BooksController < ApplicationController
   def getAllBooks
     @books = Book.all
     render json: @books
+  end
+
+  def getTopRatedBooks
+    @books = Book.getTopRatedBooks
+    render json: @books
+  end
+
+  def getTrendingBooks
+    @books = Book.getTrendingBooks
+    render json: @books
+  end
+
+  def searchBooks
+    if request.method == "POST"
+      name = params[:name]
+      author = params[:author]
+      publisher = params[:publisher]
+      genre = params[:genre]
+      @books = Book.getBooksBySearchFilter(name, author, publisher, genre)
+      render json: @books
+    end
+  end
+
+  def searchBooksByISBN
+    if request.method == "POST"
+      isbn = params[:isbn]
+      @books = Book.getBooksByISBN(isbn)
+      render json: @books
+    end
   end
 
   # GET /books/new

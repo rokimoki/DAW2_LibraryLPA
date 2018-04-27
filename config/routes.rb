@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   get 'books/getAllBooks', to: 'books#getAllBooks'
+  get 'books/getTrendingBooks', to: 'books#getTrendingBooks'
+  get 'books/getTopRatedBooks', to: 'books#getTopRatedBooks'
+  get 'genres/getAllGenres', to: 'genres#getAllGenres'
+
+  post 'books/searchBooks', to: 'books#searchBooks'
+  post 'books/searchBooksByISBN', to: 'books#searchBooksByISBN'
 
   root to: "pages#index"
 

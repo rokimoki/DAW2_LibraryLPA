@@ -12,6 +12,11 @@ class GenresController < ApplicationController
   def show
   end
 
+  def getAllGenres
+    @genres = Genre.all
+    render json: @genres
+  end
+
   # GET /genres/new
   def new
     @genre = Genre.new
