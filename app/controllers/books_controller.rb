@@ -29,6 +29,10 @@ class BooksController < ApplicationController
   end
 
   def searchBooks
+    puts "----------------- HEADERS ------------------"
+    puts request.headers["Content-Type"]
+    puts request.headers["User-Agent"]
+    puts "--------------------------------------------"
     if request.method == "POST"
       name = params[:name]
       author = params[:author]
