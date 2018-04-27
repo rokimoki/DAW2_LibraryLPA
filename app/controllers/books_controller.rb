@@ -32,6 +32,7 @@ class BooksController < ApplicationController
     puts "----------------- HEADERS ------------------"
     puts request.headers["Content-Type"]
     puts request.headers["User-Agent"]
+    puts params
     puts "--------------------------------------------"
     if request.method == "POST"
       name = params[:name]
