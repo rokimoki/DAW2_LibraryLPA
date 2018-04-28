@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422175958) do
+ActiveRecord::Schema.define(version: 20180428125553) do
 
   create_table "book_items", force: :cascade do |t|
     t.string "referenceCode"
@@ -84,6 +84,13 @@ ActiveRecord::Schema.define(version: 20180422175958) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "errors", force: :cascade do |t|
+    t.string "type"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -109,6 +116,15 @@ ActiveRecord::Schema.define(version: 20180422175958) do
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "picture"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

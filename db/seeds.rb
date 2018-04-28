@@ -8,10 +8,10 @@
 require 'time'
 require 'digest/md5'
 
-user1 = User.new email: "test1@test.com", name: "Alejandro López Santos", password: Digest::MD5.hexdigest('test1')
+user1 = Person.new name: "Alejandro López Santos", email: "test1@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1524918641/avatar1.jpg", password: Digest::MD5.hexdigest('test1')
 user1.save!
 
-user2 = User.new email: "test2@test.com", name: "Santiago Miguel Gubern González", password: Digest::MD5.hexdigest('test2')
+user2 = Person.new name: "Santiago Miguel Gubern González", email: "test2@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1524918642/avatar2.png", password: Digest::MD5.hexdigest('test2')
 user2.save!
 
 books = Book.create [{isbn: "9788478884452",
