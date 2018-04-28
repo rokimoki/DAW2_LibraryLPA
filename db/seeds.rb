@@ -226,11 +226,16 @@ for book in books
     BookItem.create referenceCode: SecureRandom.uuid, book_id: book.id
   end
 end
+#
+# for b in 1..3
+#   BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(b).book_items.first.id, person_id: user1.id
+# end
+#
+# for b in 1..3
+#   BookLoan.create startDate: Time.find_zone('London').parse('2018-03-25 10:30'), endDate: Time.find_zone('London').parse('2018-07-02 10:30'), book_item_id: Book.find(b).book_items.second.id, person_id: user2.id
+# end
 
-for b in 1..3
-  BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(b).book_items.first.id, person_id: user1.id
-end
-
-for b in 1..3
-  BookLoan.create startDate: Time.find_zone('London').parse('2018-03-25 10:30'), endDate: Time.find_zone('London').parse('2018-07-02 10:30'), book_item_id: Book.find(b).book_items.second.id, person_id: user2.id
-end
+BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.second.id, person_id: user1.id
+BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.third.id, person_id: user1.id
+BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.fourth.id, person_id: user1.id
