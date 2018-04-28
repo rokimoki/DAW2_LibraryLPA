@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   post 'books/searchBooks', to: 'books#searchBooks'
   post 'books/searchBooksByISBN', to: 'books#searchBooksByISBN'
+  post 'books/getGenresOfBookByBookId', to: 'books#getGenresOfBookByBookId'
 
   root to: "pages#index"
 

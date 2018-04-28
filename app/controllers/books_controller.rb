@@ -14,41 +14,44 @@ class BooksController < ApplicationController
   end
 
   def getAllBooks
-    @books = Book.all
-    render json: @books
+    books = Book.all
+    render json: books
   end
 
   def getTopRatedBooks
-    @books = Book.getTopRatedBooks
-    render json: @books
+    books = Book.getTopRatedBooks
+    render json: books
   end
 
   def getTrendingBooks
-    @books = Book.getTrendingBooks
-    render json: @books
+    books = Book.getTrendingBooks
+    render json: books
   end
 
   def searchBooks
-    puts "----------------- HEADERS ------------------"
-    puts request.headers["Content-Type"]
-    puts request.headers["User-Agent"]
-    puts params
-    puts "--------------------------------------------"
     if request.method == "POST"
       name = params[:name]
       author = params[:author]
       publisher = params[:publisher]
       genre = params[:genre]
-      @books = Book.getBooksBySearchFilter(name, author, publisher, genre)
-      render json: @books
+      books = Book.getBooksBySearchFilter(name, author, publisher, genre)
+      render json: books
     end
   end
 
   def searchBooksByISBN
     if request.method == "POST"
       isbn = params[:isbn]
-      @books = Book.getBooksByISBN(isbn)
-      render json: @books
+      books = Book.getBooksByISBN(isbn)
+      render json: books
+    end
+  end
+
+  def getGenresOfBookByBookId
+    if request.method == "POST"
+      bookid = params[:id]
+      genres = Book.getGenresOfBookByBookId(bookid)
+      render json: genres
     end
   end
 

@@ -6,11 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'time'
+require 'digest/md5'
 
-user1 = User.new email: "test1@test.com", name: "Alejandro López Santos", password: "test1"
+user1 = User.new email: "test1@test.com", name: "Alejandro López Santos", password: Digest::MD5.hexdigest('test1')
 user1.save!
 
-user2 = User.new email: "test2@test.com", name: "Santiago Miguel Gubern González", password: "test2"
+user2 = User.new email: "test2@test.com", name: "Santiago Miguel Gubern González", password: Digest::MD5.hexdigest('test2')
 user2.save!
 
 books = Book.create [{isbn: "9788478884452",
