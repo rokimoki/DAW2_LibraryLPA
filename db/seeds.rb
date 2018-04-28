@@ -227,3 +227,10 @@ for book in books
   end
 end
 
+for b in 1..3
+  BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(b).book_items.first.id, person_id: user1.id
+end
+
+for b in 1..3
+  BookLoan.create startDate: Time.find_zone('London').parse('2018-03-25 10:30'), endDate: Time.find_zone('London').parse('2018-07-02 10:30'), book_item_id: Book.find(b).book_items.second.id, person_id: user2.id
+end

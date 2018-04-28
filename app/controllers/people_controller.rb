@@ -17,9 +17,10 @@ class PeopleController < ApplicationController
     if request.method == "POST"
       email = params[:email]
       password = params[:password]
-      res = Person.login(email, password)
-      if res.count != 1
-        res = {type: 'Error de identificación', message: 'Usuario no encontrado'}
+      p = Person.login(email, password)
+      res = {type: 'Error de identificación', message: 'Usuario no encontrado'}
+      if p.count == 1
+        res = p.first
       end
       render json: res
     end
@@ -30,10 +31,21 @@ class PeopleController < ApplicationController
       name = params[:name]
       email = params[:email]
       password = params[:password]
-      person = Person.new name: name, email: email, password: password
-      person.save!
-      msg = {type: 'Registro', message: 'Ususario registrado'}
+      begin
+        Person.register(name, email, password)
+        msg = { type: 'Registro#ok', message: 'Ususario registrado' }
+      rescue ActiveRecord::RecordInvalid
+        msg = { type: 'Registro#error', message: 'Correo electrónico ya existente' }
+      end
       render json: msg
+    end
+  end
+
+  def getAllUserLoans
+    if request.method == "POST"
+      userId = params[:userId]
+      loans = Person.getAllUserLoans(userId)
+      render json: loans
     end
   end
 

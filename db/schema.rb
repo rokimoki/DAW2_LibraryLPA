@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428125553) do
+ActiveRecord::Schema.define(version: 20180428182650) do
 
   create_table "book_items", force: :cascade do |t|
     t.string "referenceCode"
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20180428125553) do
     t.datetime "startDate"
     t.datetime "endDate"
     t.integer "book_item_id"
-    t.integer "user_id"
+    t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_item_id"], name: "index_book_loans_on_book_item_id"
-    t.index ["user_id"], name: "index_book_loans_on_user_id"
+    t.index ["person_id"], name: "index_book_loans_on_person_id"
   end
 
   create_table "books", force: :cascade do |t|

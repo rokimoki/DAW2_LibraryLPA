@@ -22,4 +22,26 @@ class Book < ApplicationRecord
     end
   }
 
+  scope :getLoansCountByBookId, -> (bookId) {
+    res = 0
+    Book.find(bookId).book_items.each do | bookItem |
+      res += bookItem.book_loans.count
+    end
+    return res
+  }
+
+  scope :getBookItemsCountByBookId, -> (bookId) {
+    Book.find(bookId).book_items.count
+  }
+
+  scope :getAllUsersWithLoanByBookId, -> (bookId) {
+    res = Array.new
+    Book.find(bookId).book_items.each do | bookItem |
+      bookItem.book_loans.each do | bookLoan |
+        res.push Person.find(bookLoan.person_id)
+      end
+    end
+    return res
+  }
+
 end

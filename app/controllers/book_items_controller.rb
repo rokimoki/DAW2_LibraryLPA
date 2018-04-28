@@ -13,6 +13,14 @@ class BookItemsController < ApplicationController
   def show
   end
 
+  def getBookByBookItemId
+    if request.method == "POST"
+      bookItemId = params[:bookItemId]
+      book = BookItem.getBookByBookItemId(bookItemId)
+      render json: book
+    end
+  end
+
   # GET /book_items/new
   def new
     @book_item = BookItem.new
