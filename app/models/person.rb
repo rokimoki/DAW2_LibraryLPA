@@ -12,11 +12,14 @@ class Person < ApplicationRecord
 
   scope :login, ->(email, password) { Person.where('email = ?', email).where('password = ?', password) }
   scope :checkMail, -> (email) { Person.where('email = ?', email) }
+
   scope :register, ->(name, email, password) {
     person = Person.new name: name, email: email, password: password, picture: 'http://res.cloudinary.com/alejandroulpgc/image/upload/v1524937821/avatar_none.png'
     person.save!
   }
+
   scope :getAllUserLoans, -> (userId) {
     Person.find(userId).book_loans
   }
+
 end

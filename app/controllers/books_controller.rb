@@ -55,12 +55,15 @@ class BooksController < ApplicationController
     end
   end
 
-  def getBookLoanAvailabilityByBookId
+  def getAvailabilityByBookIdAndUserId
     if request.method == "POST"
       bookId = params[:bookId]
+      userId = params[:userId]
       loanCount = Book.getLoansCountByBookId(bookId)
       bookItemsCount = Book.getBookItemsCountByBookId(bookId)
-      render json: {loanCount: loanCount, bookItemsCount: bookItemsCount}
+      gotIt = BookLoan.gotIt(bookId, userId)
+      puts "got #{gotIt}"
+      render json: {loanCount: loanCount, bookItemsCount: bookItemsCount, gotIt: gotIt }
     end
   end
 

@@ -13,6 +13,30 @@ class BookLoansController < ApplicationController
   def show
   end
 
+  def getBookByBookLoanId
+    if request.method == "POST"
+      bookLoanId = params[:bookLoanId]
+      book = BookLoan.getBookByBookLoanId(bookLoanId)
+      render json: book
+    end
+  end
+
+  def getDaysLeftByBookLoanId
+    if request.method == "POST"
+      bookLoanId = params[:bookLoanId]
+      loan = BookLoan.getDaysLeftByBookLoanId(bookLoanId)
+      render json: { daysLeft: (loan.endDate.to_date - Time.now.to_date).to_i }
+    end
+  end
+
+  def returnBookLoanByBookLoanId
+    if request.method == "POST"
+      bookLoanId = params[:bookLoanId]
+      BookLoan.returnBookLoanByBookLoanId(bookLoanId)
+      render json: { type: "BookLoan", message: "Libro devuelto" }
+    end
+  end
+
   # GET /book_loans/new
   def new
     @book_loan = BookLoan.new

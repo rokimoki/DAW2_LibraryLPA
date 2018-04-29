@@ -14,6 +14,12 @@ user1.save!
 user2 = Person.new name: "Santiago Miguel Gubern González", email: "test2@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1524918642/avatar2.png", password: Digest::MD5.hexdigest('test2')
 user2.save!
 
+user3 = Person.new name: "Kevin Real Alcalde", email: "test3@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1524998985/avatar3.png", password: Digest::MD5.hexdigest('test3')
+user3.save!
+
+user4 = Person.new name: "Diego Martínez Hernández", email: "test4@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1524998985/avatar4.jpg", password: Digest::MD5.hexdigest('test4')
+user4.save!
+
 books = Book.create [{isbn: "9788478884452",
                               name: "Harry Potter y la piedra filosofal",
                               author: "J.K. Rowling",
@@ -226,16 +232,17 @@ for book in books
     BookItem.create referenceCode: SecureRandom.uuid, book_id: book.id
   end
 end
-#
-# for b in 1..3
-#   BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(b).book_items.first.id, person_id: user1.id
-# end
-#
-# for b in 1..3
-#   BookLoan.create startDate: Time.find_zone('London').parse('2018-03-25 10:30'), endDate: Time.find_zone('London').parse('2018-07-02 10:30'), book_item_id: Book.find(b).book_items.second.id, person_id: user2.id
-# end
 
-BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.first.id, person_id: user1.id
-BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.second.id, person_id: user1.id
-BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.third.id, person_id: user1.id
-BookLoan.create startDate: Time.find_zone('London').parse('2018-02-14 10:30'), endDate: Time.find_zone('London').parse('2018-05-01 10:30'), book_item_id: Book.find(1).book_items.fourth.id, person_id: user1.id
+# Book 1
+BookLoan.create startDate: (Time.now - 2.days), endDate: (Time.now + 4.days), book_item_id: Book.find(1).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: (Time.now - 3.days), endDate: (Time.now + 5.days), book_item_id: Book.find(1).book_items.second.id, person_id: user2.id
+BookLoan.create startDate: (Time.now - 4.days), endDate: (Time.now + 6.days), book_item_id: Book.find(1).book_items.third.id, person_id: user3.id
+BookLoan.create startDate: (Time.now - 5.days), endDate: (Time.now + 7.days), book_item_id: Book.find(1).book_items.fourth.id, person_id: user4.id
+
+# Books for User1
+BookLoan.create startDate: (Time.now - 4.day), endDate: (Time.now - 1.day), book_item_id: Book.find(10).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: (Time.now - 3.day), endDate: Time.now, book_item_id: Book.find(14).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: (Time.now - 4.day), endDate: (Time.now + 1.days), book_item_id: Book.find(8).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: (Time.now - 3.day), endDate: (Time.now + 2.days), book_item_id: Book.find(20).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: (Time.now - 4.day), endDate: (Time.now + 3.days), book_item_id: Book.find(22).book_items.first.id, person_id: user1.id
+BookLoan.create startDate: (Time.now - 3.day), endDate: (Time.now + 15.days), book_item_id: Book.find(18).book_items.first.id, person_id: user1.id

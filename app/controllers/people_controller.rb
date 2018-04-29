@@ -49,6 +49,22 @@ class PeopleController < ApplicationController
     end
   end
 
+  def getBookLoansAndBookByUserId
+    if request.method == "POST"
+      userId = params[:userId]
+      loansAndBook = Person.getAllUserLoans(userId)
+      res = Array.new
+      loansAndBook.each do |loan|
+        obj = {}
+        obj["bookLoanId"] = loan.id
+        obj["daysLeft"] = (loan.endDate.to_date - Time.now.to_date).to_i
+        obj["book"] = loan.book_item.book
+        res.push obj
+      end
+      render json: res
+    end
+  end
+
   # GET /people/new
   def new
     @person = Person.new

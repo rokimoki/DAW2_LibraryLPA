@@ -8,14 +8,19 @@ Rails.application.routes.draw do
   post 'books/searchBooks', to: 'books#searchBooks'
   post 'books/searchBooksByISBN', to: 'books#searchBooksByISBN'
   post 'books/getGenresOfBookByBookId', to: 'books#getGenresOfBookByBookId'
-  post 'books/getBookLoanAvailabilityByBookId', to: 'books#getBookLoanAvailabilityByBookId'
+  post 'books/getAvailabilityByBookIdAndUserId', to: 'books#getAvailabilityByBookIdAndUserId'
   post 'books/getAllUsersWithLoanByBookId', to: 'books#getAllUsersWithLoanByBookId'
 
   post 'book_items/getBookByBookItemId', to: 'book_items#getBookByBookItemId'
 
+  post 'book_loans/getBookByBookLoanId', to: 'book_loans#getBookByBookLoanId'
+  post 'book_loans/getDaysLeftByBookLoanId', to: 'book_loans#getDaysLeftByBookLoanId'
+  post 'book_loans/returnBookLoanByBookLoanId', to: 'book_loans#returnBookLoanByBookLoanId'
+
   post 'people/log_in', to: 'people#login'
   post 'people/register', to: 'people#register'
   post 'people/getAllUserLoans', to: 'people#getAllUserLoans'
+  post 'people/getBookLoansAndBookByUserId', to: 'people#getBookLoansAndBookByUserId'
 
 
   root to: "pages#index"
