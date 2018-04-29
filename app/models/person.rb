@@ -19,7 +19,7 @@ class Person < ApplicationRecord
   }
 
   scope :getAllUserLoans, -> (userId) {
-    Person.find(userId).book_loans
+    Person.find(userId).book_loans.order('endDate asc')
   }
 
 end

@@ -8,6 +8,24 @@ class MessagesController < ApplicationController
     @messages = Message.all
   end
 
+  def sendChatMessageToUserId
+    if request.method == "POST"
+      chatId = params[:chatId]
+      userId = params[:userId]
+      message = params[:message]
+      Message.create(chat_id: chatId, user_id: userId, message: message)
+      render json: {type: "Chat Send", message: "Mensaje enviado"}
+    end
+  end
+
+  def getAllMessagesByChatId
+    if request.method == "POST"
+      chatId = params[:chatId]
+      messages = Message.getAllMessagesByChatId(chatId)
+      render json: messages
+    end
+  end
+
   # GET /messages/1
   # GET /messages/1.json
   def show

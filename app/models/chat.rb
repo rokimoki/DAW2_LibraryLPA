@@ -6,16 +6,30 @@ class Chat < ApplicationRecord
 
   scope :getChatWithUserId, -> (creatorId, receiverId) {
     res = {}
-    res["messages"] = []
     currentChat = Chat.where('(creator_id = ? or receiver_id = ?) and (creator_id = ? or receiver_id = ?)', creatorId, creatorId, receiverId, receiverId)
     chat = currentChat.first
     if currentChat.count == 0
       chat = Chat.create creator_id: creatorId, receiver_id: receiverId
-    else
-      res["messages"] = Message.where('chat_id = ?', chat.id).order('created_at asc').limit(50)
     end
     res["chatId"] = chat.id
     res["toUser"] = Person.find(receiverId)
+    return res
+  }
+
+  scope :getAllChatsByUserId, -> (userId) {
+    res = Array.new
+    Chat.where('creator_id = ?', userId).each do |chat|
+      obj = {}
+      obj["chatId"] = chat.id
+      obj["toUser"] = Person.find(chat.receiver_id)
+      res.push obj
+    end
+    Chat.where('receiver_id = ?', userId).each do |chat|
+      obj = {}
+      obj["chatId"] = chat.id
+      obj["toUser"] = Person.find(chat.creator_id)
+      res.push obj
+    end
     return res
   }
 end

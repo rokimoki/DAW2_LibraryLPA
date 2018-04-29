@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   post 'people/getBookLoansAndBookByUserId', to: 'people#getBookLoansAndBookByUserId'
 
   post 'chats/getChatWithUserId', to: 'chats#getChatWithUserId'
+  post 'chats/getAllChatsByUserId', to: 'chats#getAllChatsByUserId'
+
+  post 'messages/getAllMessagesByChatId', to: 'messages#getAllMessagesByChatId'
+  post 'messages/sendChatMessageToUserId', to: 'messages#sendChatMessageToUserId'
 
   root to: "pages#index"
 

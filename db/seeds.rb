@@ -252,7 +252,7 @@ BookLoan.create startDate: (Time.now - 4.day), endDate: (Time.now + 3.days), boo
 BookLoan.create startDate: (Time.now - 3.day), endDate: (Time.now + 15.days), book_item_id: Book.find(18).book_items.first.id, person_id: user1.id
 
 # Chat Example
-chat1 = Chat.create creator_id: user1.id, receiver_id: user2.id
-Message.create message: "Hola Miki, me gustaría pillarte el libro de Harry Potter", chat_id: chat1.id, user_id: user1.id
+chat1 = Chat.create creator_id: user5.id, receiver_id: user2.id
+Message.create message: "Hola Miki, me gustaría pillarte el libro de Harry Potter", chat_id: chat1.id, user_id: user5.id
 Message.create message: "Hola Alejandro, aún no lo he acabado, sorry", chat_id: chat1.id, user_id: user2.id
-Message.create message: "Vale, avísame cuando acabes plis!!", chat_id: chat1.id, user_id: user1.id
+Message.create message: "Vale, avísame cuando acabes plis!!", chat_id: chat1.id, user_id: user5.id
