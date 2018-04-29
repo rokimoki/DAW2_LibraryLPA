@@ -1,6 +1,6 @@
 # [DAW2] LibraryLPA
 
-## Versión web para Móviles
+## Back-End Ruby On Rails
 
 ### Tecnología Back-End utilizadas
 - Ruby version: 2.4.1p111
