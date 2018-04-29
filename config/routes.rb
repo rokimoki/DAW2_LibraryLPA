@@ -16,12 +16,14 @@ Rails.application.routes.draw do
   post 'book_loans/getBookByBookLoanId', to: 'book_loans#getBookByBookLoanId'
   post 'book_loans/getDaysLeftByBookLoanId', to: 'book_loans#getDaysLeftByBookLoanId'
   post 'book_loans/returnBookLoanByBookLoanId', to: 'book_loans#returnBookLoanByBookLoanId'
+  post 'book_loans/createBookLoan', to: 'book_loans#createBookLoan'
 
   post 'people/log_in', to: 'people#login'
   post 'people/register', to: 'people#register'
   post 'people/getAllUserLoans', to: 'people#getAllUserLoans'
   post 'people/getBookLoansAndBookByUserId', to: 'people#getBookLoansAndBookByUserId'
 
+  post 'chats/getChatWithUserId', to: 'chats#getChatWithUserId'
 
   root to: "pages#index"
 

@@ -20,6 +20,10 @@ user3.save!
 user4 = Person.new name: "Diego Martínez Hernández", email: "test4@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1524998985/avatar4.jpg", password: Digest::MD5.hexdigest('test4')
 user4.save!
 
+user5 = Person.new name: "Adriel García Apellido2", email: "test5@test.com", picture: "http://res.cloudinary.com/alejandroulpgc/image/upload/v1525012770/avatar5.png", password: Digest::MD5.hexdigest('test5')
+user5.save!
+
+
 books = Book.create [{isbn: "9788478884452",
                               name: "Harry Potter y la piedra filosofal",
                               author: "J.K. Rowling",
@@ -246,3 +250,9 @@ BookLoan.create startDate: (Time.now - 4.day), endDate: (Time.now + 1.days), boo
 BookLoan.create startDate: (Time.now - 3.day), endDate: (Time.now + 2.days), book_item_id: Book.find(20).book_items.first.id, person_id: user1.id
 BookLoan.create startDate: (Time.now - 4.day), endDate: (Time.now + 3.days), book_item_id: Book.find(22).book_items.first.id, person_id: user1.id
 BookLoan.create startDate: (Time.now - 3.day), endDate: (Time.now + 15.days), book_item_id: Book.find(18).book_items.first.id, person_id: user1.id
+
+# Chat Example
+chat1 = Chat.create creator_id: user1.id, receiver_id: user2.id
+Message.create message: "Hola Miki, me gustaría pillarte el libro de Harry Potter", chat_id: chat1.id, user_id: user1.id
+Message.create message: "Hola Alejandro, aún no lo he acabado, sorry", chat_id: chat1.id, user_id: user2.id
+Message.create message: "Vale, avísame cuando acabes plis!!", chat_id: chat1.id, user_id: user1.id

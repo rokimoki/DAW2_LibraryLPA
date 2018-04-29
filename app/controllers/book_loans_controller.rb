@@ -15,7 +15,7 @@ class BookLoansController < ApplicationController
 
   def getBookByBookLoanId
     if request.method == "POST"
-      bookLoanId = params[:bookLoanId]
+ raira     bookLoanId = params[:bookLoanId]
       book = BookLoan.getBookByBookLoanId(bookLoanId)
       render json: book
     end
@@ -33,7 +33,16 @@ class BookLoansController < ApplicationController
     if request.method == "POST"
       bookLoanId = params[:bookLoanId]
       BookLoan.returnBookLoanByBookLoanId(bookLoanId)
-      render json: { type: "BookLoan", message: "Libro devuelto" }
+      render json: { type: "BookLoan", message: "Libro devuelto correctamente" }
+    end
+  end
+
+  def createBookLoan
+    if request.method == "POST"
+      bookId = params[:bookId]
+      userId = params[:userId]
+      BookLoan.createBookLoan(bookId, userId)
+      render json: { type: "BookLoan", message: "Libro reservado por dos semanas, ¡disfrútalo!" }
     end
   end
 

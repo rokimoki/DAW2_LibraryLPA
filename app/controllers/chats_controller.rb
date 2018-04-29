@@ -8,6 +8,15 @@ class ChatsController < ApplicationController
     @chats = Chat.all
   end
 
+  def getChatWithUserId
+    if request.method == "POST"
+      creatorId = params[:creatorId]
+      receiverId = params[:receiverId]
+      chatInfoWithUserAndMessages = Chat.getChatWithUserId(creatorId, receiverId)
+      render json: chatInfoWithUserAndMessages
+    end
+  end
+
   # GET /chats/1
   # GET /chats/1.json
   def show

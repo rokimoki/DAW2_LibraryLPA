@@ -15,4 +15,13 @@ class BookLoan < ApplicationRecord
     end
     return 0
   }
+
+  scope :createBookLoan, -> (bookId, userId) {
+    BookItem.where('book_id = ?', bookId).each do |bookItem|
+      if bookItem.book_loans.count == 0
+        BookLoan.create startDate: Time.now, endDate: (Time.now + 2.weeks), book_item_id: bookItem.id, person_id: userId
+        break
+      end
+    end
+  }
 end
